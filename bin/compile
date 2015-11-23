@@ -6,16 +6,15 @@ set -e
 # Meaning it's possible to choose os/architecture/version of the application.
 BIN_PATH="$1/bin"
 TMP_PATH="$1/tmp"
-WKHTMLTOPDF_FILENAME=${WKHTMLTOPDF_FILENAME:-"wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"}
-WKHTMLTOPDF_URL=${WKHTMLTOPDF_URL:-"http://download.gna.org/wkhtmltopdf/obsolete/linux"}
+WKHTMLTOPDF_URL=${WKHTMLTOPDF_URL:-"http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"}
 WKHTMLTOPDF_DOWNLOAD_SHA=${WKHTMLTOPDF_DOWNLOAD_SHA:-"b20c17284d4c03d81ac6ec3e251201da2b99830c9ac831281c8b5d841e7a6632"}
 
 mkdir -p $BIN_PATH $TMP_PATH
 cd $TMP_PATH
 mkdir wkhtmltopdf
 cd wkhtmltopdf
-wget ${WKHTMLTOPDF_URL}/${WKHTMLTOPDF_FILENAME}
-echo "${WKHTMLTOPDF_DOWNLOAD_SHA} *${WKHTMLTOPDF_FILENAME}" | sha256sum -c | grep "OK"
-tar xfj ${WKHTMLTOPDF_FILENAME}
+wget ${WKHTMLTOPDF_URL} -O wkhtmltopdf.tar.bz2
+echo "${WKHTMLTOPDF_DOWNLOAD_SHA} *wkhtmltopdf.tar.bz2" | sha256sum -c | grep "OK"
+tar xfj wkhtmltopdf.tar.bz2
 mv wkhtmltopdf-amd64 $BIN_PATH/wkhtmltopdf
 rm -rf $TMP_PATH/wkhtmltopdf

@@ -12,8 +12,7 @@ Loosely based on [dscout/wkhtmltopdf-buildpack](https://github.com/dscout/wkhtml
 
     Example:
     ```bash
-    heroku config:set WKHTMLTOPDF_FILENAME="wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"
-    heroku config:set WKHTMLTOPDF_URL="http://download.gna.org/wkhtmltopdf/obsolete/linux"
+    heroku config:set WKHTMLTOPDF_URL="http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"
     heroku config:set WKHTMLTOPDF_DOWNLOAD_SHA="b20c17284d4c03d81ac6ec3e251201da2b99830c9ac831281c8b5d841e7a6632"
     ```
 
@@ -22,11 +21,11 @@ Loosely based on [dscout/wkhtmltopdf-buildpack](https://github.com/dscout/wkhtml
 This buildpack only installs wkhtmltopdf, it isn't very useful by itself. You'll probably want to use it as part of a multi-buildpack. Here is an example using the Ruby buildpack.
 
 ```bash
-$ heroku buildpacks:set 'https://github.com/heroku/heroku-buildpack-multi.git'
-$ echo 'https://github.com/heroku/heroku-buildpack-ruby.git' >> .buildpacks
-$ echo 'https://github.com/barsoom/wkhtmltopdf-buildpack.git' >> .buildpacks
+$ heroku buildpacks:set "https://github.com/heroku/heroku-buildpack-multi.git"
+$ echo "https://github.com/heroku/heroku-buildpack-ruby.git" >> .buildpacks
+$ echo "https://github.com/barsoom/wkhtmltopdf-buildpack.git" >> .buildpacks
 $ git add .buildpacks
-$ git commit -m 'Add multi-buildpack'
+$ git commit -m "Add multi-buildpack"
 ```
 
 [0]: http://devcenter.heroku.com/articles/buildpacks
